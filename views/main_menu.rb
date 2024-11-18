@@ -1,30 +1,41 @@
-require "io/console"
-
-TERMINAL_WIDTH = IO.console.winsize[1]
-def center_text(text,split)
-  terminal_width = TERMINAL_WIDTH #get the current width of the windows
-  # Calculate padding needed to center the text
-  padding = (terminal_width - text.length) / 2
-  puts split * padding + text + split * padding
-end
-
-def border(text)
-  terminal_width = TERMINAL_WIDTH
-  padding = (TERMINAL_WIDTH - text.length) / 2
-  top_border = "-" * terminal_width
-  bottom_border = "-" * terminal_width
-  left_border = "|" + " " * (padding - 1)
-  right_border = " " * (padding - 1) + "|"
-  puts top_border
-  puts left_border + text + right_border
-  puts bottom_border
-end
-
-def main_menu
-  border("AM Banking App")
+require_relative "../utilities/input_functions"
+require_relative '../utilities/border_text'
+require_relative '../utilities/center_text'
+def display_main_menu
+  border_text("AM Banking App")
   center_text("Welcome"," ")
   puts "1: login"
-  puts "2: new user"
+  puts "2: register"
   puts "3: exit"
+  choice = read_integer("enter your choice: ")
+  return choice
 end
-main_menu
+
+def display_login_menu
+  email = read_string("Enter Email: ")
+  password = read_string("Enter Password: ")
+  login_credential = {"email" => email, "password" => password}
+  return login_credential
+end
+
+def display_register_menu
+  name = read_string("Enter Name: ")
+  email = read_string("Enter Email: ")
+  password = ""
+  while true
+    password = read_string("Enter Password: ")
+    confirm_password = read_string("Enter Confirm Password: ")
+    if password == confirm_password
+      break
+    else
+      puts "password does not match! try again."
+    end
+  end
+  new_registration = {"name" => name, "email" => email, "password" => password}
+  return new_registration
+end
+
+
+
+
+

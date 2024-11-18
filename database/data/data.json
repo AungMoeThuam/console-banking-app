@@ -1,0 +1,37 @@
+{
+  "name": "aung",
+  "users": [
+    {
+      "name": "aung moe thu",
+      "email": "a@gmail.com",
+      "password": "a",
+      "accounts": [
+        {
+          "is_active": true,
+          "is_freeze": false,
+          "type": "SAVINGS",
+          "balance": 1000.0,
+          "account_no": "1h31-31h3-131i",
+          "transactions": [
+            {
+              "id": "adada",
+              "date": "2/2/2023",
+              "amount": 100.0,
+              "type": "deposit",
+              "sender": "11",
+              "recipient": "12"
+            }
+          ]
+        }
+      ],
+      "role": "CUSTOMER"
+    },
+    {
+      "name": "koko",
+      "email": "b@gmail.com",
+      "password": "ab",
+      "accounts": [],
+      "role": "CUSTOMER"
+    }
+  ]
+}
