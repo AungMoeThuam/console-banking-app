@@ -27,11 +27,20 @@
       "role": "CUSTOMER"
     },
     {
+
       "name": "koko",
       "email": "b@gmail.com",
       "password": "ab",
       "accounts": [],
       "role": "CUSTOMER"
+    },
+    {
+
+      "name": "manager",
+      "email": "manager@gmail.com",
+      "password": "123",
+      "accounts": [],
+      "role": "MANAGER"
     }
   ]
 }
