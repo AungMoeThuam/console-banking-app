@@ -1,45 +1,21 @@
 require_relative '../database/database'
 require_relative '../models/user'
+require_relative '../views/user_view'
+require_relative '../repository/user_repository'
 require "json"
 
 class User_Controller
   attr_accessor :users, :current_user
 
   def initialize
-    @users = get_users
-    puts @users.inspect
     @current_user = nil
-  end
-  def get_users()
-    data = read_file()
-    i = 0
-    users = []
-    while i < data["users"].length
-      user = data["users"][i]
-      name = user["name"]
-      email = user["email"]
-      password = user["password"]
-      accounts = user["accounts"]
-      role = user["role"]
-      users[i] = Customer.new( name,email, password)
-      users[i].accounts = accounts
-      i += 1
-    end
-    return users
+    @user_repository = UserRepository.new
   end
 
+
   def login(login_credential)
-    i = 0
-    while i < @users.length
-      user = @users[i]
-      if user.email == login_credential["email"] && user.password == login_credential["password"]
-        hash = {"name"=>user.name, accounts: user.accounts}
-        @current_user = user
-        return hash
-      end
-      i += 1
-    end
-    return nil
+    user = @user_repository.find_user(login_credential)
+
   end
 
   def create_user()

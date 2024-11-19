@@ -1,0 +1,3 @@
+class AdminView
+
+end
