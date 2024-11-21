@@ -8,9 +8,9 @@ class User
     @password = password
   end
 
-  def to_json
+  def to_hash
     hash = {"name" => @name, "email" => @email, "password" => @password,"role" => @role}
-    hash.to_json
+    hash
   end
 end
 
@@ -21,6 +21,7 @@ class Admin < User
     super(name,email,password)
     @role = User_Role::ADMIN
   end
+
 end
 
 class Manager < User
@@ -37,5 +38,10 @@ class Customer < User
     super(name,email,password)
     @role=User_Role::CUSTOMER
     @accounts = []
+  end
+
+  def to_hash
+    hash = {"name" => @name, "email" => @email, "password" => @password,"role" => @role,"accounts" => @accounts}
+    hash
   end
 end

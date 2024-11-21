@@ -21,7 +21,7 @@ class UserRepository
   end
 
   def find_user(user)
-    users = @db.query_all_users
+    users = @db.read_users
     i = 0
     while i < users.length
       if user["email"] == users[i]["email"] && user["password"] == users[i]["password"]
@@ -31,6 +31,12 @@ class UserRepository
       i += 1
     end
     return nil
+  end
+
+  def insert_user(user)
+    users = @db.read_users
+    users.push(user.to_hash)
+    @db.write_users(users)
   end
 end
 

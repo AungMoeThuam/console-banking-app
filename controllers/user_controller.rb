@@ -1,6 +1,5 @@
 require_relative '../database/database'
 require_relative '../models/user'
-require_relative '../views/user_view'
 require_relative '../repository/user_repository'
 require "json"
 
@@ -13,10 +12,6 @@ class User_Controller
   end
 
 
-  def login(login_credential)
-    user = @user_repository.find_user(login_credential)
-
-  end
 
   def create_user()
 
