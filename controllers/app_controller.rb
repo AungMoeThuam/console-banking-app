@@ -1,11 +1,13 @@
-require_relative '../controllers/user_controller'
-require_relative '../utilities/message_functions'
+require_relative '../controllers/customer_controller'
+require_relative '../controllers/admin_controller'
+require_relative '../controllers/manager_controller'
 require_relative '../utilities/center_text'
 require_relative '../constants/user_role'
 require_relative '../views/app_view'
 require_relative '../repository/user_repository'
 
-class App_Controller
+
+class AppController
   def initialize
     @user_repository = UserRepository.new
     @app_view = AppView.new
@@ -28,19 +30,45 @@ class App_Controller
 
   def login
     login_credential=  @app_view.display_login_menu
-    user = @user_repository.find_user(login_credential)
+    user = @user_repository.find_user_by_login(login_credential)
+    if !user
+      puts "Invalid email and password!"
+      return
+    end
+    if user.role != User_Role::ADMIN && !user.is_activated
+      puts "sorry your account is not activated!"
+      return
+    end
+    user_controller = nil
+    case user.role
+    when User_Role::ADMIN
+      user_controller = AdminController.new(user)
+    when User_Role::MANAGER
+      user_controller = ManagerController.new(user)
+    else
+      user_controller = CustomerController.new(user)
+    end
+
+    user_controller.start
   end
 
   def register
     register_credential=  @app_view.display_register_menu
-    new_user = Customer.new(register_credential["name"], register_credential["email"] ,register_credential["password"])
+    if_user_exist = @user_repository.is_email_exist(register_credential["email"])
+    if if_user_exist
+      puts "User already registered!"
+      return
+    end
+    new_user = Customer.new(register_credential["name"], register_credential["email"] ,register_credential["password"],0.0)
     @user_repository.insert_user(new_user)
+    puts "Registration successful!"
+    read_string("Press enter to continue...")
 
   end
 
 end
 
-app = App_Controller.new
+app = AppController.new
 app.run_app
 
 

@@ -6,3 +6,5 @@ def generate_unique_id
   hex_4 = SecureRandom.hex(2)
   return "#{hex_1}-#{hex_2}-#{hex_3}-#{hex_4}"
 end
+
+puts generate_unique_id

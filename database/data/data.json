@@ -1,55 +1,147 @@
 [
   {
-    "name": "aung moe thu",
-    "email": "a@gmail.com",
-    "password": "a",
-    "accounts": [
-      {
-        "is_active": true,
-        "is_freeze": false,
-        "type": "SAVINGS",
-        "balance": 1000.0,
-        "account_no": "1h31-31h3-131i",
-        "transactions": [
-          {
-            "id": "adada",
-            "date": "2/2/2023",
-            "amount": 100.0,
-            "type": "deposit",
-            "sender": "11",
-            "recipient": "12"
-          }
-        ]
-      }
-    ],
-    "role": "CUSTOMER"
-  },
-  {
-    "name": "koko",
-    "email": "b@gmail.com",
-    "password": "ab",
-    "accounts": [],
-    "role": "CUSTOMER"
-  },
-  {
-    "name": "manager",
-    "email": "manager@gmail.com",
-    "password": "123",
-    "accounts": [],
-    "role": "MANAGER"
-  },
-  {
-    "name": "messi",
-    "email": "messi@gmail.com",
-    "password": "123",
-    "role": "CUSTOMER",
-    "accounts": []
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "password": "admin",
+    "role": "ADMIN"
   },
   {
     "name": "aung",
-    "email": "12",
-    "password": "ad",
+    "email": "aung@gmail.com",
+    "password": "aung",
+    "account_no": "1h31-31h3-131i-c0bl",
+    "role": "MANAGER",
+    "is_activated": true
+  },
+  {
+    "name": "aung moe thu",
+    "email": "a@gmail.com",
+    "password": "a",
+    "account_no": "1h31-31h3-131i-c0bc",
     "role": "CUSTOMER",
-    "accounts": []
+    "is_activated": false,
+    "balance": 800.0,
+    "transactions": [
+      {
+        "id": "41e8-a36c-be6a-4642",
+        "date": "20241128005629",
+        "amount": 100.0,
+        "sender": "1h31-31h3-131i-c0bc",
+        "recipient": "3797-f0c7-53c9-c0bc",
+        "type": "TRANSFER"
+      },
+      {
+        "id": "7e50-5fb0-4826-7c5b",
+        "date": "20241128005629",
+        "amount": 100.0,
+        "sender": "1h31-31h3-131i-c0bc",
+        "recipient": "3797-f0c7-53c9-c0bc",
+        "type": "TRANSFER"
+      },
+      {
+        "id": "4937-4ecb-7b6b-388e",
+        "date": "20241128005629",
+        "amount": 100.0,
+        "account_no": "1h31-31h3-131i-c0bc",
+        "type": "DEPOSIT"
+      },
+      {
+        "id": "1655-f0db-63ed-34e1",
+        "date": "20241128005629",
+        "amount": 100.0,
+        "sender": "1h31-31h3-131i-c0bc",
+        "recipient": "b064-b912-924f-dc30",
+        "type": "TRANSFER"
+      }
+    ]
+  },
+  {
+    "name": "messi",
+    "email": "messi@yahool.com",
+    "password": "m",
+    "account_no": "3797-f0c7-53c9-c0bc",
+    "role": "CUSTOMER",
+    "balance": 10400.0,
+    "is_activated": true,
+    "transactions": [
+      {
+        "id": "41e8-a36c-be6a-4642",
+        "date": "20241126172923",
+        "amount": 100.0,
+        "sender": "1h31-31h3-131i-c0bc",
+        "recipient": "3797-f0c7-53c9-c0bc",
+        "type": "TRANSFER"
+      },
+      {
+        "id": "7e50-5fb0-4826-7c5b",
+        "date": "20241126172923",
+        "amount": 100.0,
+        "sender": "1h31-31h3-131i-c0bc",
+        "recipient": "3797-f0c7-53c9-c0bc",
+        "type": "TRANSFER"
+      },
+      {
+        "id": "ea67-9946-64c5-77ac",
+        "date": "20241126173028",
+        "amount": 300.0,
+        "account_no": "3797-f0c7-53c9-c0bc",
+        "type": "DEPOSIT"
+      },
+      {
+        "id": "dc57-e9ac-7b74-47e1",
+        "date": "20241126173048",
+        "amount": 300.0,
+        "account_no": "3797-f0c7-53c9-c0bc",
+        "type": "WITHDRAWAL"
+      },
+      {
+        "id": "2267-3e5f-7c41-1270",
+        "date": "20241126173102",
+        "amount": 100.0,
+        "account_no": "3797-f0c7-53c9-c0bc",
+        "type": "DEPOSIT"
+      },
+      {
+        "id": "d322-47ba-ef8d-6fb9",
+        "date": "20241126173105",
+        "amount": 100.0,
+        "account_no": "3797-f0c7-53c9-c0bc",
+        "type": "DEPOSIT"
+      }
+    ]
+  },
+  {
+    "name": "mo",
+    "email": "mo@gmail.com",
+    "password": "mo",
+    "account_no": "b064-b912-924f-dc30",
+    "role": "CUSTOMER",
+    "balance": 200.0,
+    "is_activated": true,
+    "transactions": [
+      {
+        "id": "fb23-d976-8337-e938",
+        "date": "20241126212207",
+        "amount": 100.0,
+        "account_no": "b064-b912-924f-dc30",
+        "type": "DEPOSIT"
+      },
+      {
+        "id": "1655-f0db-63ed-34e1",
+        "date": "20241126212207",
+        "amount": 100.0,
+        "sender": "1h31-31h3-131i-c0bc",
+        "recipient": "b064-b912-924f-dc30",
+        "type": "TRANSFER"
+      }
+    ]
+  },
+  {
+    "name": "manager2",
+    "email": "manager2@com",
+    "account_no": "4091-56cc-02fe-d87c",
+    "password": "a",
+    "role": "MANAGER",
+    "is_activated": false
   }
 ]
