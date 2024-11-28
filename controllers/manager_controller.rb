@@ -1,17 +1,14 @@
-require_relative '../database/database'
 require_relative '../models/user'
-require_relative '../repository/user_repository'
+require_relative '../database/repository'
 require_relative '../views/manager_view'
-require "json"
 
 class ManagerController
 
-  def initialize(user)
-    @user = user
-    @manager_view = ManagerView.new(@user)
-    @user_repository = UserRepository.new
+  def initialize(manager)
+    @manager = manager
+    @manager_view = ManagerView.new(@manager)
+    @repository = Repository.new
   end
-
 
   def start
     while true
@@ -23,20 +20,26 @@ class ManagerController
         check_user_account_info
       when 5
         return
+      else
+        @manager_view.display_invalid_choice_message
       end
     end
   end
 
   def check_user_transactions
-    user_account_no = @manager_view.display_checking_transactions_menu
+    user_account_no = @manager_view.display_asking_user_acc_number_menu
     if user_account_no == "0"
       return
     end
 
-    user = @user_repository.find_user_by_account_no(user_account_no)
+    user = @repository.find_user_by_account_no(user_account_no)
 
     if !user
-      puts "There is no user with account no #{user_account_no}"
+      @manager_view.display_user_not_found_message(user_account_no)
+      return
+    end
+    if user.role == User_Role::ADMIN || user.role == User_Role::MANAGER
+      @manager_view.display_user_not_found_message(user_account_no)
       return
     end
     @manager_view.display_transactions(user)
@@ -44,26 +47,25 @@ class ManagerController
   end
 
   def check_user_account_info
-    user_account_no = @manager_view.display_checking_customer_info_menu
+    user_account_no = @manager_view.display_asking_user_acc_number_menu
     if user_account_no == "0"
       return
     end
 
-    user = @user_repository.find_user_by_account_no(user_account_no)
+    user = @repository.find_user_by_account_no(user_account_no)
 
     if !user
-      puts "There is no user with account no #{user_account_no}"
+      @manager_view.display_user_not_found_message(user_account_no)
+      return
+    end
+    if user.role == User_Role::ADMIN || user.role == User_Role::MANAGER
+      @manager_view.display_user_not_found_message(user_account_no)
       return
     end
 
     @manager_view.display_customer_info(user)
 
   end
-
-
-
-
-
 
 end
 
