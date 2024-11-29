@@ -94,7 +94,7 @@ class AdminView < UserView
   end
 
   def display_deactivation_success_message(account_no)
-    puts "user with account number #{user.account_no} is deactivated successfully!"
+    puts "user with account number #{account_no} is deactivated successfully!"
     read_string("Press enter to continue...")
   end
 
