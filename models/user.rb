@@ -19,7 +19,7 @@ class User
 end
 
 class Admin < User
-  attr_accessor :role
+  attr_reader :role
 
   def initialize(name, email, password)
     super(name, email, password)
